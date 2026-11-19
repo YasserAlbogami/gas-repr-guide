@@ -1,0 +1,20 @@
+# Data (not committed; folders kept with .gitkeep)
+data/raw/**
+!data/raw/**/
+!data/raw/**/.gitkeep
+data/processed/**
+!data/processed/**/
+!data/processed/**/.gitkeep
+
+# Model checkpoints
+checkpoints/
+*.pt
+*.pth
+*.ckpt
+
+# Jupyter / Python
+.ipynb_checkpoints/
+__pycache__/
+*.pyc
+.venv/
+venv/
