@@ -150,9 +150,5 @@ Notebooks 01 to 03 write one csv each to `results/`; the 04 notebooks and the re
 
 ## 👥 Team
 
-| Member | Owns |
-|---|---|
-| A | `00_data/`, `load_*.py`, `preprocess.py`, `01_naive_raw/` |
-| B | `02_handcrafted/`, `heads.py`, `cv.py` |
-| C | `03_encoder/` |
-| All | `04_comparisons/`, report |
+- **Yasser**
+- **Saeed**
