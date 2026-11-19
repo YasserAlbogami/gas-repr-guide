@@ -25,6 +25,7 @@ Course project (CS220): compare three feature representations of e-nose sensor c
 
 ```bash
 pip install -r requirements.txt
+python get_data.py                                        # unzip EverydayScents + download/unzip UCI 251 (resumable)
 jupyter notebook                                          # run notebooks in number order
 jupyter nbconvert --to notebook --execute --inplace notebooks/01_naive_raw/01a_gwt_raw.ipynb   # run one notebook headless
 ```

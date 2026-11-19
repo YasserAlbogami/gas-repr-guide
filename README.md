@@ -89,10 +89,16 @@ venv\Scripts\activate          # Linux/Mac: source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-Place the data (not committed):
+Get the data (run once after cloning):
 
-- `data/raw/gas_wind_tunnel/`: UCI 251 download
-- `data/raw/everyday_scents/`: `session_<id>.csv` and `session_<id>_metadata.json`
+```bash
+python get_data.py
+```
+
+- `data/raw/everyday_scents/`: unzipped from the committed `data/everyday_scents.zip` (81 sessions: `session_<id>.csv` + `session_<id>_metadata.json`)
+- `data/raw/gas_wind_tunnel/`: downloaded from UCI 251 (large; the download resumes if interrupted, just run the script again)
+
+`data/raw/` and `data/processed/` are not committed.
 
 ---
 
@@ -117,8 +123,10 @@ Notebooks 01 to 03 write one csv each to `results/`; the 04 notebooks and the re
 ├── README.md
 ├── Architecture.md
 ├── requirements.txt
+├── get_data.py                     # fills data/raw/ (run once after cloning)
 ├── docs/implementation_plan.md     # the project plan
 ├── data/
+│   ├── everyday_scents.zip         # EverydayScents sessions (committed)
 │   ├── raw/                        # gas_wind_tunnel/, everyday_scents/ (not committed)
 │   └── processed/                  # X_signals.npy + meta.csv per dataset (not committed)
 ├── notebooks/
