@@ -10,7 +10,8 @@ System design of the feature representation study. The source of truth for every
                  │  00a                                     │  00b labels, 00c segmentation
                  ▼                                          ▼
    load_gwt.py + preprocess.py                 load_es.py + preprocess.py
-   resample → 1500, baseline correction        voltage_v, baseline→60 + sampling→150, baseline correction
+   baseline→150 + exposure→1350, recovery     voltage_v, baseline→60 + sampling→150,
+   dropped, baseline correction                cleaning dropped, baseline correction
                  │                                          │
                  ▼                                          ▼
    X_signals.npy (600, 72, 1500)               X_signals.npy (144, 11, 210)

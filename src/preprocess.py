@@ -1,7 +1,7 @@
 """Preprocessing shared by all representations (identical within a dataset).
 
 - resample: put a curve on a fixed number of evenly spaced points
-  GasWindTunnel (72, T_raw) -> (72, 1500)
+  GasWindTunnel baseline phase -> 150 points, exposure phase -> 1350 points, joined to (72, 1500)
   EverydayScents baseline phase -> 60 points, sampling phase -> 150 points, joined to (11, 210)
 - baseline_correct: subtract the per-sensor mean of the baseline part
 

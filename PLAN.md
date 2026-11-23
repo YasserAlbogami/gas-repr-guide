@@ -128,7 +128,7 @@ Everything follows `docs/implementation_plan.md` and the `CLAUDE.md` rules: simp
 
 ## Outcome (2026-11-22)
 
-- Phase 1 run: GWT `X_signals.npy` (600, 72, 1500), L3 / 500 V, CO_4000 (CO_1000 is incomplete), n_base = 116, exposure ends at point 1155.
+- Phase 1 run: GWT `X_signals.npy` (600, 72, 1500), L3 / 500 V, CO_4000 (CO_1000 is incomplete). Recovery phase dropped (2026-11-23) for consistency with ES: baseline 0-20.2 s -> 150 points, exposure 20.2-200.2 s -> 1350 points (n_base = 150, exposure_end = 1500).
   ES `X_signals.npy` (144, 11, 210): 11 of the 155 labelled samples are aborted recordings (sampling phase 0-15 s) and were dropped in 00c.
   `old_dataset.csv` / `new_truffle_dataset.csv` do not overlap with the sessions (June vs July-August).
 - Phases 2-5 written, not run; shape smoke test on random arrays passed.

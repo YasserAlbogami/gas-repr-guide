@@ -9,7 +9,7 @@ Zip layout:
 One file = one recording, a text table with 92 columns and ~13,000-26,000 rows over 260 s:
     col 0        time in ms
     col 1-2      fan set point / fan speed
-    col 3-5      gas flow set points: 0 before the release, > 0 while gas is released (about 20 s to 200 s)
+    col 3-5      gas flow set points: 0 before the release, > 0 while gas is released (about 20.2 s to 200.2 s)
     col 6-8      measured gas flows
     col 9-10     temperature, relative humidity
     col 11-91    9 boards x (1 flag column + 8 sensor columns)  ->  72 sensor columns

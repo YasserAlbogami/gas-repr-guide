@@ -4,7 +4,7 @@ Every function takes one baseline-corrected curve r (T,) (response relative to t
 and the time indices of the phases:
     0 .. n_base-1          baseline (before the gas / scent)
     n_base .. exp_end-1    exposure
-    exp_end .. T-1         recovery (GasWindTunnel only; EverydayScents ends with the exposure)
+    (both datasets end with the exposure: the recovery / cleaning phase is not used, so exp_end = T)
 
  #  feature                 description
  1  baseline level          mean of the baseline (the resting level, taken before baseline correction)
