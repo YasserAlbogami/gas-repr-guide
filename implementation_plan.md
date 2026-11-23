@@ -1,4 +1,4 @@
-# Raw, Engineered, or Learned? A Feature Representation Guide for Gas Sensor Channels
+# A Comparative Study of Raw, Handcrafted, and Learned Feature Representations for Gas Sensor Array Classification
 
 ## Implementation Plan (v3: two datasets, three representations)
 

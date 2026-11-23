@@ -1,4 +1,4 @@
-# Raw, Engineered, or Learned? A Feature Representation Guide for Gas Sensor Channels
+# A Comparative Study of Raw, Handcrafted, and Learned Feature Representations for Gas Sensor Array Classification
 
 A controlled comparison of three ways to turn electronic nose sensor curves into feature vectors (raw, handcrafted, learned by a 1D CNN encoder), each fed to the same classification heads with the same folds and preprocessing.
 We run it on a large lab dataset of pure gases and a small real world dataset of everyday scents.

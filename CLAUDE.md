@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project
 
-Course project (CS220): compare three feature representations of e-nose sensor curves (R1 raw, R2 handcrafted, R3 1D CNN encoder) under identical heads, folds and preprocessing, on two datasets, and turn the results into a representation guide. `Architecture.md` has the system design.
+Course project (CS220), titled **A Comparative Study of Raw, Handcrafted, and Learned Feature Representations for Gas Sensor Array Classification**: compare three feature representations of e-nose sensor curves (R1 raw, R2 handcrafted, R3 1D CNN encoder) under identical heads, folds and preprocessing, on two datasets, and turn the results into a representation guide. `Architecture.md` has the system design.
 
 ## Rules
 

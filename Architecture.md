@@ -1,5 +1,7 @@
 # Architecture
 
+**A Comparative Study of Raw, Handcrafted, and Learned Feature Representations for Gas Sensor Array Classification**
+
 System design of the feature representation study. The source of truth for every number here is [`docs/implementation_plan.md`](docs/implementation_plan.md).
 
 ## 1. Pipeline
