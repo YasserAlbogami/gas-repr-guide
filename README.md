@@ -33,9 +33,9 @@ Full plan: [`docs/implementation_plan.md`](docs/implementation_plan.md).
 | | GasWindTunnel | EverydayScents |
 |---|---|---|
 | Source | UCI 251, *Gas Sensor Arrays in Open Sampling Settings* (lab) | Our own, collected with a low cost e-nose (field and lab) |
-| Recordings used | 600 (one board location, one heater voltage, 3 wind speeds) | 155 samples from 81 sessions |
+| Recordings used | 600 (one board location, one heater voltage, 3 wind speeds) | 144 samples from 81 sessions (155 labelled, 11 incomplete recordings dropped) |
 | Channels | 72 metal oxide sensors | 11 gas channels |
-| X_signals | (600, 72, 1500) | (155, 11, 210) |
+| X_signals | (600, 72, 1500) | (144, 11, 210) |
 | Multiclass task | 10 gases | 4 scents: ambient, coffee, truffle, black_pepper |
 | Binary task | CO vs other gases | truffle vs not truffle |
 | Folds | StratifiedKFold(5), stratified by gas × wind speed | StratifiedGroupKFold(5), grouped by session |
@@ -83,20 +83,22 @@ See [`Architecture.md`](Architecture.md) for details.
 
 ## 📥 Setup & Installation
 
+The environment is managed with [uv](https://docs.astral.sh/uv/) (install: `pip install uv` or see the uv docs).
+
 ```bash
-python -m venv venv
-venv\Scripts\activate          # Linux/Mac: source venv/bin/activate
-pip install -r requirements.txt
+uv sync                  # creates .venv with the exact versions pinned in uv.lock
 ```
 
 Get the data (run once after cloning):
 
 ```bash
-python get_data.py
+uv run get_data.py
 ```
 
+Open the notebooks with `uv run jupyter lab` (or select `.venv` as the kernel in VS Code). Add a package with `uv add <package>`.
+
 - `data/raw/everyday_scents/`: unzipped from the committed `data/everyday_scents.zip` (81 sessions: `session_<id>.csv` + `session_<id>_metadata.json`)
-- `data/raw/gas_wind_tunnel/`: downloaded from UCI 251 (large; the download resumes if interrupted, just run the script again)
+- `data/raw/gas_wind_tunnel/uci251.zip`: downloaded from UCI 251 (about 8 GB, kept zipped; notebook 00a reads the 600 recordings it needs straight from the zip). The UCI server cannot resume, so an interrupted download starts over.
 
 `data/raw/` and `data/processed/` are not committed.
 
@@ -122,7 +124,7 @@ Notebooks 01 to 03 write one csv each to `results/`; the 04 notebooks and the re
 .
 ├── README.md
 ├── Architecture.md
-├── requirements.txt
+├── pyproject.toml + uv.lock        # dependencies (uv)
 ├── get_data.py                     # fills data/raw/ (run once after cloning)
 ├── docs/implementation_plan.md     # the project plan
 ├── data/

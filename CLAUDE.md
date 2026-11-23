@@ -16,7 +16,7 @@ Course project (CS220): compare three feature representations of e-nose sensor c
 ## Structure that spans files
 
 - Shared code in `src/`; notebooks stay short and call it. Notebooks run in number order (`00a` … `04f`). `gwt` = GasWindTunnel, `es` = EverydayScents.
-- `00_data` notebooks write `data/processed/<dataset>/X_signals.npy` (baseline corrected, **not** scaled) + `meta.csv`. Expected: GWT (600, 72, 1500), ES (155, 11, 210).
+- `00_data` notebooks write `data/processed/<dataset>/X_signals.npy` (baseline corrected, **not** scaled) + `meta.csv`. Expected: GWT (600, 72, 1500), ES (144, 11, 210) (155 labelled samples, 11 incomplete recordings dropped in 00c).
 - Notebooks 01–03 each write one csv to `results/` (columns: seed, fold, task, rep, head, metrics). The `04_comparisons` notebooks and the report read only from `results/`, never recompute scores.
 - The two datasets are never merged (72 vs 11 channels); the same functions run on each.
 - `data/raw/`, `data/processed/` and model checkpoints are git-ignored.
@@ -24,10 +24,12 @@ Course project (CS220): compare three feature representations of e-nose sensor c
 ## Commands
 
 ```bash
-pip install -r requirements.txt
-python get_data.py                                        # unzip EverydayScents + download/unzip UCI 251 (resumable)
-jupyter notebook                                          # run notebooks in number order
-jupyter nbconvert --to notebook --execute --inplace notebooks/01_naive_raw/01a_gwt_raw.ipynb   # run one notebook headless
+uv sync                                                   # create .venv from pyproject.toml + uv.lock
+uv run get_data.py                                        # unzip EverydayScents + download UCI 251 zip (~8 GB, kept zipped)
+uv run jupyter lab                                        # run notebooks in number order
+uv run jupyter nbconvert --to notebook --execute --inplace notebooks/01_naive_raw/01a_gwt_raw.ipynb   # run one notebook headless
 ```
+
+Dependencies live in `pyproject.toml` (pinned in `uv.lock`); add one with `uv add <pkg>`, never with pip.
 
 No test suite or linter is set up yet.

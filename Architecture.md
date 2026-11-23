@@ -13,8 +13,8 @@ System design of the feature representation study. The source of truth for every
    resample → 1500, baseline correction        voltage_v, baseline→60 + sampling→150, baseline correction
                  │                                          │
                  ▼                                          ▼
-   X_signals.npy (600, 72, 1500)               X_signals.npy (155, 11, 210)
-   meta.csv (600 rows)                         meta.csv (155 rows, with session_id)
+   X_signals.npy (600, 72, 1500)               X_signals.npy (144, 11, 210)
+   meta.csv (600 rows)                         meta.csv (144 rows, with session_id)
                  └──────────────────┬───────────────────────┘
                                     ▼
              src/features/: raw.py (R1) | handcrafted.py (R2) | encoder.py (R3)
@@ -32,9 +32,9 @@ The two datasets have different channels and are never merged; the same code run
 
 | Artifact | GasWindTunnel | EverydayScents |
 |---|---|---|
-| `X_signals.npy` | (600, 72, 1500), baseline corrected, not scaled | (155, 11, 210), baseline corrected, not scaled |
-| `y_multi` | (600,), 10 gases, 60 each | (155,), 4 classes, 37 / 42 / 54 / 22 |
-| `y_binary` | (600,), CO vs other, 60 / 540 | (155,), truffle vs not, 54 / 101 |
+| `X_signals.npy` | (600, 72, 1500), baseline corrected, not scaled | (144, 11, 210), baseline corrected, not scaled (11 incomplete recordings dropped) |
+| `y_multi` | (600,), 10 gases, 60 each | (144,), 4 classes, 33 / 39 / 50 / 22 |
+| `y_binary` | (600,), CO vs other, 60 / 540 | (144,), truffle vs not, 50 / 94 |
 | Grouping | strat = gas × wind speed | groups = session_id, strat = y_multi |
 
 Every results csv has the columns: seed, fold, task, rep, head, metrics.
@@ -43,15 +43,15 @@ Every results csv has the columns: seed, fold, task, rep, head, metrics.
 
 | | Operation | GasWindTunnel F | EverydayScents F | Fitted? |
 |---|---|---|---|---|
-| R1 raw | downsample to T' (100 / 70), flatten | (600, 7200) | (155, 770) | no |
-| R2 handcrafted | 12 features per sensor | (600, 864) | (155, 132) | no |
-| R3 encoder | shared 1D CNN per sensor, 32 channels after GAP | (600, 2304) | (155, 352) | yes, per fold |
+| R1 raw | downsample to T' (100 / 70), flatten | (600, 7200) | (144, 770) | no |
+| R2 handcrafted | 12 features per sensor | (600, 864) | (144, 132) | no |
+| R3 encoder | shared 1D CNN per sensor, 32 channels after GAP | (600, 2304) | (144, 352) | yes, per fold |
 
 R3 training per fold: encoder + temporary linear layer trained on training labels, linear layer removed, encoder frozen, features extracted for train and test. The end to end CNN (03c) is a separate reference point.
 
 ## 4. Evaluation and leakage control
 
-- GasWindTunnel: `StratifiedKFold(5)`, 480 / 120 per fold. EverydayScents: `StratifiedGroupKFold(5)` by session, about 124 / 31. 3 seeds each, mean ± std.
+- GasWindTunnel: `StratifiedKFold(5)`, 480 / 120 per fold. EverydayScents: `StratifiedGroupKFold(5)` by session, about 115 / 29. 3 seeds each, mean ± std.
 - Inside each fold: StandardScaler, encoder and heads are fitted on the training part only. Hyperparameters come from an inner validation split of the training part.
 - Metrics: macro F1 (primary), balanced accuracy, ROC AUC (binary), confusion matrix (best model per representation).
 - Sanity check C5: heads fitted on the baseline segment only must score near chance (10% / 25%).

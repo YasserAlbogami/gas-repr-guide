@@ -1,0 +1,20 @@
+[project]
+name = "gas-repr-guide"
+version = "0.1.0"
+description = "Raw, Engineered, or Learned? A Feature Representation Guide for Gas Sensor Channels"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "numpy>=2.0",
+    "pandas>=2.2",
+    "scipy>=1.13",
+    "scikit-learn>=1.5",
+    "torch>=2.4",
+    "matplotlib>=3.9",
+    "jupyter>=1.1",
+    "nbconvert>=7.16",
+    "ipykernel>=6.29",
+]
+
+[tool.uv]
+package = false   # a research project, not an installable library: notebooks import src/ from the project root
