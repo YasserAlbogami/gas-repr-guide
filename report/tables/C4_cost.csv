@@ -1,0 +1,7 @@
+dataset,rep,D,build_features_s,best_head,train_best_head_s,gpu
+es,R1_raw,770,0.0,rf,0.36,no
+es,R2_handcrafted,132,0.07,rf,0.31,no
+es,R3_encoder,352,0.88,logreg,0.25,optional (trains on CPU)
+gwt,R1_raw,7200,0.03,rf,3.54,no
+gwt,R2_handcrafted,864,3.31,rf,1.4,no
+gwt,R3_encoder,2304,4.05,rf,7.56,optional (trains on CPU)

@@ -1,0 +1,7 @@
+,best_head_f1,best_head_f1,best_head_f1,best_head_f1,rank,rank,rank,rank
+task,binary,binary,multi,multi,binary,binary,multi,multi
+dataset,es,gwt,es,gwt,es,gwt,es,gwt
+rep,,,,,,,,
+R1_raw,0.9534198492093229,1.0,0.8173574052055341,0.9916441404006622,3.0,1.0,3.0,2.0
+R2_handcrafted,0.9616832537885169,1.0,0.8713458339432562,0.9955419884463362,2.0,1.0,1.0,1.0
+R3_encoder,0.9636709256386503,0.9967942296133039,0.8559824813304083,0.9872397959528395,1.0,3.0,2.0,3.0

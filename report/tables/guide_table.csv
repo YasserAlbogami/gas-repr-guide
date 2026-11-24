@@ -1,0 +1,7 @@
+Your situation,Recommended representation,Evidence,Numbers
+"Lab data, many labeled recordings",R2_handcrafted,"C1 GasWindTunnel, C3",GWT multiclass best: 0.996; with 10% labels the best is R2_handcrafted
+"Real world scents, few samples",R2_handcrafted,"C1 EverydayScents, C2",ES multiclass best: 0.871
+Need interpretable features,R2_handcrafted,"C1, random forest importance","R2 vs best: GWT 0.996 vs 0.996, ES 0.871 vs 0.871"
+"No GPU, limited time","GWT: R1_raw, ES: R2_handcrafted",C4,cheapest representation within 0.02 macro F1 of the best
+Detecting one target (binary),"GWT: R1_raw, ES: R3_encoder",C1 binary tables,
+Identifying many classes,R2_handcrafted,C1 multiclass tables,10-class GasWindTunnel task
